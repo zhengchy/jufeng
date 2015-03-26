@@ -25,6 +25,7 @@ public class BaseServiceImpl<T> {
 	private BaseMapper<T> mapper;
 
 	public List<T> queryAll(T t) {
+		String aa = "11";
 		return mapper.queryAll(t);
 	}
 
