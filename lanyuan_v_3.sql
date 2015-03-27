@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer3423
 
-Source Server         : localhost
+Source Server         : localhost test
 Source Server Version : 50535
 Source Host           : 127.0.0.1:3306
 Source Database       : lanyuan_v_3
