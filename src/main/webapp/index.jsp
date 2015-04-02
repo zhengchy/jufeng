@@ -293,7 +293,7 @@ window.onresize = function()
 				<!-- /.aside -->
 				<section id="content">
 					<section class="vbox">
-						<iframe id="ifm" src="welcome.jsp" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" allowtransparency="yes"></iframe>
+						<iframe id="ifm" src="main.jsp" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" allowtransparency="yes"></iframe>
 					</section>
 					<a href="index.html#" class="hide nav-off-screen-block"
 						data-toggle="class:nav-off-screen, open" data-target="#nav,html"></a>
