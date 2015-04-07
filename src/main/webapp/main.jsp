@@ -1,11 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Insert title here</title> 
 <%@include file="/common/common.jspf"%>
+	
+	  <link rel="stylesheet" href="${ctx}/admin003/js/calendar/bootstrap_calendar.css" type="text/css" cache="false" />
+    <script src="${ctx}/admin003/js/charts/easypiechart/jquery.easy-pie-chart.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/charts/sparkline/jquery.sparkline.min.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/charts/flot/jquery.flot.min.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/charts/flot/jquery.flot.tooltip.min.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/charts/flot/jquery.flot.resize.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/charts/flot/jquery.flot.grow.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/charts/flot/demo.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/calendar/bootstrap_calendar.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/calendar/demo.js" cache="false"></script>
+    <script src="${ctx}/admin003/js/sortable/jquery.sortable.js" cache="false"></script>
 </head>
 <body>
 

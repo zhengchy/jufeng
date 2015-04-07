@@ -71,6 +71,7 @@
         <servlet-name>springmvc</servlet-name>
         <!-- / 表示所有的请求都要经过此serlvet -->
         <url-pattern>*.shtml</url-pattern>
+        <url-pattern>*.html</url-pattern>
     </servlet-mapping>
 
     <!-- spring的监听器 -->

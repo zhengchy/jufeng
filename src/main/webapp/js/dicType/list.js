@@ -18,7 +18,7 @@ $(function() {
 			colkey : "description",
 			name : "描述"
 		} ],
-		jsonUrl : 'query.shtml',
+		jsonUrl : 'query.shtml', 
 		checkbox : true
 	});
 	$("#search").click("click", function() {// 绑定查询按扭
