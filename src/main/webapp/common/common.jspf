@@ -24,14 +24,22 @@ user-scalable - 用户是否可以手动缩放
 <link rel="stylesheet" href="${ctx}/notebook/notebook_files/font.css" type="text/css">
 <link rel="stylesheet" href="${ctx}/notebook/notebook_files/app.v1.css" type="text/css">
 <link rel="stylesheet" href="${ctx}/css/lanyuan.css" type="text/css">
-	<!-- base start 重要部分不可删改-->
+<link rel="stylesheet"
+	href="${ctx}/admin003/js/datepicker/datepicker.css" type="text/css"
+	cache="false" />
+	<!-- base start 重要部分不可删改
 <script type="text/javascript" src="${ctx}/notebook/notebook_files/ly.plugin.v3.js"></script>
+-->
+<script src="${ctx}/admin003/js/app.v2.js"
+	cache="false"></script>
 <script type="text/javascript" src="${ctx}/js/jquery.form.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery-validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery-validation/messages_cn.js"></script>
 <script type="text/javascript" src="${ctx}/layer-v1.8.5/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/common.js"></script>
 <script type="text/javascript" src="${ctx}/js/lyGrid.js"></script>
+<script src="${ctx}/admin003/js/datepicker/bootstrap-datepicker.js"
+	cache="false"></script>
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
 <style type="text/css">
 .l_err{
@@ -71,28 +79,42 @@ function getSelectEx(byId,options){
 			    async : true, //同步   不写的情况下 默认为true
 			    url : rootPath + options.url,
 			    data : options.data,
-			    success : function(data){
+			    success : function(data){ 
 			    	for(var i = 0; i < data.length;i++){
-				    	var selectObj = $("#"+byId).find("ul"); 
+				    	var selectObj = $("[id='"+byId+"']").find("ul"); 
 				    	if(selectObj){
+			
 				    		if(options.value == "" && i == 0){
-				    			$("#"+byId).append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
-										"<span class='dropdown-label'>"+data[i][options.textFiled]+"</span> <span class='caret'></span></button>");
-				    			$("#"+byId).find("ul").append("<li class='active'><a href='#'><input type='radio' name="+options.name+
-							    		" value="+data[i][options.valueFiled]+" checked='checked'>"+data[i][options.textFiled]+"</a></li>");
+
+								if(options.all == true){
+					    			$("[id='"+byId+"']").append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
+											"<span class='dropdown-label'>"+"所有"+"</span> <span class='caret'></span></button>");
+									$("[id='"+byId+"']").find("ul").append("<li class='active'><a href='#'><input type='radio' name="+options.name+
+								    		" value='' checked='checked' >"+"所有"+"</a></li>");  
+					    			$("[id='"+byId+"']").find("ul").append("<li class=''><a href='#'><input type='radio' name="+options.name+
+								    		" value="+data[i][options.valueFiled]+" >"+data[i][options.textFiled]+"</a></li>");
+				    			} else{
+					    			$("[id='"+byId+"']").append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
+											"<span class='dropdown-label'>"+data[i][options.textFiled]+"</span> <span class='caret'></span></button>");
+				    				$("[id='"+byId+"']").find("ul").append("<li class='active'><a href='#'><input type='radio' name="+options.name+
+								    		" value="+data[i][options.valueFiled]+" checked='checked'>"+data[i][options.textFiled]+"</a></li>");
+				    			}
+
 						    }else{
 						    	 if(options.value == data[i][options.valueFiled]){
-						    		    $("#"+byId).append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
+						    		    $("[id='"+byId+"']").append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
 												"<span class='dropdown-label'>"+data[i][options.textFiled]+"</span> <span class='caret'></span></button>");
-								    	$("#"+byId).find("ul").append("<li class='active'><a href='#'><input type='radio' name="+options.name+
+								    	$("[id='"+byId+"']").find("ul").append("<li class='active'><a href='#'><input type='radio' name="+options.name+
 									    		" value="+data[i][options.valueFiled]+" checked='checked'>"+data[i][options.textFiled]+"</a></li>");
 								 }else{
-									 $("#"+byId).find("ul").append("<li class=''><a href='#'><input type='radio' name="+options.name+
+									 $("[id='"+byId+"']").find("ul").append("<li class=''><a href='#'><input type='radio' name="+options.name+
 									    		" value="+data[i][options.valueFiled]+" >"+data[i][options.textFiled]+"</a></li>");
 								 }
 							}
+
 					    }	
-			    	}	
+			    	}
+
 				}
 			});
 			

@@ -77,6 +77,12 @@ public class AccountController extends BaseController {
 		 * 获得第1张图片（根据前台的name名称得到上传的文件） MultipartFile imgFile1 =
 		 * multipartRequest.getFile("upload");
 		 */
+//		Account accountReturn = this.accountService.isExist(account.getAccountName());
+//		if(null!=accountReturn){
+//			request.setAttribute("error", "用户名已存在");
+//			return "error";
+//		}
+		
 		if (null!=upload&&!"".equals(upload.getOriginalFilename())) {
 			UploadUtil uploadutil = new UploadUtil();
 			uploadutil.uploadImage1(request, upload, upload.getContentType(),

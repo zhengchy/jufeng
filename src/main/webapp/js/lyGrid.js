@@ -83,8 +83,10 @@
 					json = data;
 				},
 				error : function(msg) {
+					//alert(data);
+					alert(msg);
 					alert("数据异常！");
-					json = '';
+					json = ''; 
 				}
 			});
 			return json;

@@ -38,6 +38,7 @@ public class ChainDefinitionSectionMetaSource implements FactoryBean<Ini.Section
                 	String permission = "perms[" + resources.getResKey() + "]";
                 	//不对角色进行权限验证
                 	//如需要则  permission = "roles[" + resources.getResKey() + "]";
+                	//permission = "roles[" + resources.getResKey() + "]";
                 section.put(resources.getResUrl(), permission);
             }
 

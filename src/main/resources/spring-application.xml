@@ -50,17 +50,17 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动匹配Mapper映射文件 -->
-		<property name="mapperLocations" value="classpath:mappings/*-mapper.xml"/>
-		<property name="typeAliasesPackage" value="com.lanyuan.entity"/>
+		<property name="mapperLocations" value="classpath:mappings/**/*-mapper.xml"/>
+		<property name="typeAliasesPackage" value="com.lanyuan.entity,com.lanyuan.entity.jf"/>
 		<property name="plugins">
 			<array>
 				<ref bean="pagePlugin" />
 			</array>
-		</property>
+		</property> 
 	</bean>
 	<!-- 通过扫描的模式，扫描目录在com.lanyuan.mapper目录下，所有的mapper都继承SqlMapper接口的接口， 这样一个bean就可以了 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.lanyuan.mapper" />
+		<property name="basePackage" value="com.lanyuan.mapper,com.lanyuan.mapper.jf" />
 	</bean>
 	<!-- 事务配置 -->
 	<bean id="transactionManager"

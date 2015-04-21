@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanyuan.mapper.jf.StockMapper">
+	<!-- 以下与实体类的中字段一致  -->
+	<sql id="selectId">
+		jf_stock.id,
+	jf_stock.tyreNum,
+	jf_stock.inPrice,
+	jf_stock.outPrice,
+	jf_stock.useCar,
+	jf_stock.inUser,
+	jf_stock.outUser,
+	jf_stock.inDate,
+	jf_stock.outDate,
+	jf_stock.brandId,
+	jf_brand.brandName,
+	jf_stock.channelId,
+	jf_channel.channelName,
+	jf_stock.formatId,
+	jf_product_format.formatName,
+	jf_stock.productId,
+	jf_product.productName,
+	jf_stock.customerId,
+	jf_customer.customerName
+	from
+	jf_stock
+	LEFT JOIN jf_brand ON jf_stock.brandId = jf_brand.id
+	LEFT JOIN jf_channel ON jf_stock.channelId = jf_channel.id
+	LEFT JOIN jf_product_format ON jf_stock.formatId = jf_product_format.id
+	LEFT JOIN jf_product ON jf_stock.productId = jf_product.id
+	LEFT JOIN jf_customer ON jf_stock.customerId = jf_customer.id 
+	</sql>
+	
+
+	<select id="query" resultMap="StockResultMap" parameterType="Stock">
+	select
+	jf_stock.id,
+	jf_stock.tyreNum,
+	jf_stock.inPrice,
+	jf_stock.outPrice,
+	jf_stock.useCar,
+	jf_stock.inUser,
+	jf_stock.outUser,
+	jf_stock.inDate,
+	jf_stock.outDate,
+	jf_stock.brandId,
+	jf_brand.brandName,
+	jf_stock.channelId,
+	jf_channel.channelName,
+	jf_stock.formatId,
+	jf_product_format.formatName,
+	jf_stock.productId,
+	jf_product.productName,
+	jf_stock.customerId,
+	jf_customer.customerName
+	from
+	jf_stock
+	LEFT JOIN jf_brand ON jf_stock.brandId = jf_brand.id
+	LEFT JOIN jf_channel ON jf_stock.channelId = jf_channel.id
+	LEFT JOIN jf_product_format ON jf_stock.formatId = jf_product_format.id
+	LEFT JOIN jf_product ON jf_stock.productId = jf_product.id
+	LEFT JOIN jf_customer ON jf_stock.customerId = jf_customer.id 
+			
+			<where> 
+			1=1
+			<if test="t.customer != null and t.customer != ''">
+			  and jf_stock.customerId = '${t.customer.id}'
+			</if>
+			<if test="t.tyreNum != null and t.tyreNum != ''">
+			and	tyreNum like '%${t.tyreNum}%'
+			</if>
+			<if test="t.inDate != null and t.inDate != ''">
+			and	inDate = '${t.inDate}%'
+			</if>
+			<if test="t.outDate != null and t.outDate != ''">
+			and	outDate = '${t.outDate}%'
+			</if>
+		</where>
+	</select>
+
+
+	<resultMap type="Stock" id="StockResultMap">
+		<id property="id" column="id" />
+		<result property="tyreNum" column="tyreNum" />
+		<result property="inPrice" column="inPrice" />
+		<result property="outPrice" column="outPrice" />
+		<result property="useCar" column="useCar" />
+		<result property="inUser" column="inUser" />
+		<result property="outUser" column="outUser" />
+		<result property="inDate" column="inDate" />
+		<result property="outDate" column="outDate" />
+		<association property="channel" javaType="com.lanyuan.entity.jf.Channel"
+			column="channelId">
+			<id property="id" column="channelId" />
+			<result property="channelName" column="channelName" />
+			<result property="channelDesc" column="channelDesc" />
+		</association>
+		<association property="brand" javaType="com.lanyuan.entity.jf.Brand"
+			column="brandId">
+			<id property="id" column="brandId" />
+			<result property="brandName" column="brandName" />
+			<result property="brandDesc" column="brandDesc" />
+		</association>
+		<association property="format" javaType="com.lanyuan.entity.jf.ProductFormat"
+			column="formatId">
+			<id property="id" column="formatId" />
+			<result property="formatName" column="formatName" />
+			<result property="formatDesc" column="formatDesc" />
+		</association>
+		<association property="product" javaType="com.lanyuan.entity.jf.Product"
+			column="productId">
+			<id property="id" column="productId" />
+			<result property="productName" column="productName" />
+			<result property="productDesc" column="productDesc" />
+		</association>
+		<association property="customer" javaType="com.lanyuan.entity.jf.Customer"
+			column="customerId">
+			<id property="id" column="customerId" />
+			<result property="customerName" column="customerName" />
+			<result property="customerDesc" column="customerDesc" />
+		</association>
+	</resultMap>
+	
+		<insert id="add" parameterType="Stock">
+		insert into jf_Stock (
+			channelId,
+			brandId,
+			formatId,
+			productId,
+			tyreNum,
+			inPrice,
+			inUser,
+			inDate,
+			state
+		)values (
+			#{channel.id},
+			#{brand.id},
+			#{format.id},
+			#{product.id},
+			#{tyreNum},
+			#{inPrice},
+			#{inUser},
+			#{inDate},
+			#{state}
+		)
+	</insert>
+	
+	
+		<select id="getById" parameterType="Stock" resultType="StockResultMap">
+		select
+		<include refid="selectId" />
+		 where jf_stock.id=#{id}
+	</select>
+	
+		<update id="update" parameterType="Brand">
+		update jf_stock
+		 set
+		    brandName =#{brandName},
+	    	brandDesc = #{brandDesc}
+	   where id = #{id} 
+	</update>
+
+</mapper>

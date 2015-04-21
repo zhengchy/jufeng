@@ -48,6 +48,8 @@ public class MyRealm extends AuthorizingRealm {
 		if (loginName != null) {
 			String accountId = SecurityUtils.getSubject().getSession()
 					.getAttribute("userSessionId").toString();
+			
+			Account user =  accountService.getById(accountId);
 			List<Resources> rs = resourcesService
 					.findAccountResourcess(accountId);
 			// 权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
@@ -55,7 +57,7 @@ public class MyRealm extends AuthorizingRealm {
 			// 用户的角色集合
 			//info.addRole("default");
 			// 用户的角色集合
-			// info.setRoles(user.getRolesName());
+			// info.setRoles(user.getRoleName());
 			// 用户的角色对应的所有权限，如果只使用角色定义访问权限
 			for (Resources resources : rs) {
 				info.addStringPermission(resources.getResKey());

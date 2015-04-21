@@ -68,6 +68,7 @@ public class BackgroundController {
 		// account.setPassword(Md5Tool.getMd5(password));
 		// 验证用户账号与密码是否正确
 		Account users = this.accountService.countAccount(account);
+
 		map.put("error", "0");
 		if (users == null) {
 			map.put("error", "用户或密码不正确！");
@@ -95,6 +96,7 @@ public class BackgroundController {
 			// 当以上认证成功后会向下执行,认证失败会抛出异常
 			UsernamePasswordToken token = new UsernamePasswordToken(username,
 					password);
+			//this.accountService.isExist("aa");
 			try {
 				user.login(token);
 			} catch (LockedAccountException lae) {

@@ -27,6 +27,8 @@ public class Common {
 	public static final String BACKGROUND_PATH = "WEB-INF/jsp/background";
 	//前台访问
 	public static final String WEB_PATH = "/WEB-INF/jsp/web";
+	//飓风
+	public static final String JF_PATH = "/WEB-INF/jsp/jf";
 	//默认除法运算精度
     private static final int DEF_DIV_SCALE = 10;
     

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanyuan.mapper.jf.BrandMapper">
+	<!-- 以下与实体类的中字段一致 -->
+	<sql id="selectId">
+		id,
+		brandName,
+		brandDesc
+	</sql>
+	<!--resultType="Brand" 每返回一条结果封装到Log里 -->
+	
+	<select id="isExist" resultType="Brand" parameterType="String">
+		select
+		<include refid="selectId" />
+		from jf_brand
+		where jf_brand.brandName = #{name} 
+	</select> 
+	
+	
+	<select id="query" resultType="Brand" parameterType="Brand">
+		select
+		<include refid="selectId" />
+		from  jf_brand
+		<where>
+		<if test="t.brandName != null and t.brandName != ''">
+				brandName like '%${t.brandName}%'
+			</if>
+			<if test="t.brandDesc != null and t.brandDesc != ''">
+				brandDesc = '${t.brandDesc}'
+			</if>
+		</where>
+	</select>
+		<!-- 增加品牌 -->
+	<insert id="add" parameterType="Brand">
+		insert into jf_brand (
+			brandName,
+			brandDesc
+		)values (
+			#{brandName},
+			#{brandDesc}
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		delete from jf_brand where
+		id=#{id}
+	</delete>
+	
+	<select id="getById" parameterType="String" resultType="Brand">
+		select
+		<include refid="selectId" />
+		from jf_brand where id=#{id}
+	</select>
+	
+		<update id="update" parameterType="Brand">
+		update jf_brand
+		 set
+		    brandName =#{brandName},
+	    	brandDesc = #{brandDesc}
+	   where id = #{id} 
+	</update>
+	
+		<select id="queryAll" resultType="Brand" parameterType="java.util.HashMap">
+		select
+		<include refid="selectId" /> 
+		from jf_brand where 1=1
+		
+	</select>
+
+</mapper>

@@ -30,7 +30,7 @@
 		<where>
 		ly_dic.dicTypeId=ly_dic_type.id
 		<if test="t.dicName != null and t.dicName != ''">
-			and ly_dic,dicName like '%${t.dicName}%'
+			and ly_dic.dicName like '%${t.dicName}%'
 		</if>
 		<if test="t.dicTypeKey != null and t.dicTypeKey != ''">
 			and ly_dic_type.dicTypeKey = #{t.dicTypeKey}

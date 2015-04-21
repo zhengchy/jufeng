@@ -51,7 +51,7 @@
 					<div class="main_input_box">
 						<span class="add-on bg_ly" style="background: #28b779"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/account_1.png"
-							alt="请输入账号.."></span><input type="text" placeholder="username" name="username" value="root"
+							alt="请输入账号.."></span><input type="text" placeholder="username" name="username" value="zhengchy"
 							style="height: 32px; margin-bottom: 0px;"/>
 					</div>
 				</div>
@@ -61,11 +61,11 @@
 					<div class="main_input_box">
 						<span class="add-on bg_ly"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/lock_1.png"
-							alt="请输入密码.."></span><input type="password" placeholder="password" name="password" value="root"
+							alt="请输入密码.."></span><input type="password" placeholder="password" name="password" value="123"
 							style="height: 32px; margin-bottom: 0px;"/>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<div class="form-actions">
 				<span class="pull-left"><a href="#"
 					class="flip-link btn btn-info" id="to-recover">忘记密码？</a></span> <span
